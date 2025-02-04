@@ -1,0 +1,78 @@
+nameOverride: ""
+
+openshift:
+  user:
+    name: 
+    role: 
+
+namespace:
+  size: small
+
+small:
+  resourcequotas:
+    deploy:
+      hard:
+        limits.cpu: '2'
+        limits.memory: 8Gi
+        requests.cpu: '1'
+        requests.memory: 8Gi
+      scopes:
+        - NotTerminating
+    build:
+      hard:
+        limits.cpu: '2'
+        limits.memory: 8Gi
+        requests.cpu: '1'
+        requests.memory: 8Gi
+      scopes:
+        - Terminating
+    storage:
+      hard:
+        count/persistentvolumeclaims: '5'
+        limits.ephemeral-storage: 15Gi
+        requests.ephemeral-storage: 15Gi
+        requests.storage: 60Gi
+  limitranges:
+    limits:
+      - type: Container
+        default:
+          cpu: '1'
+          memory: 1000Mi
+        defaultRequest:
+          cpu: 10m
+          memory: 64Mi
+
+medium:
+  resourcequotas:
+    deploy:
+      hard:
+        limits.cpu: '3'
+        limits.memory: 12Gi
+        requests.cpu: '2'
+        requests.memory: 12Gi
+      scopes:
+        - NotTerminating
+    build:
+      hard:
+        limits.cpu: '3'
+        limits.memory: 12Gi
+        requests.cpu: '1'
+        requests.memory: 12Gi
+      scopes:
+        - Terminating
+    storage:
+      hard:
+        count/persistentvolumeclaims: '10'
+        limits.ephemeral-storage: 20Gi
+        requests.ephemeral-storage: 20Gi
+        requests.storage: 100Gi
+  limitranges:
+    limits:
+      - type: Container
+        default:
+          cpu: '2'
+          memory: 2000Mi
+        defaultRequest:
+          cpu: 10m
+          memory: 64Mi
+

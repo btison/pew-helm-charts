@@ -1,0 +1,11 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: compute-build
+spec:
+  {{- if eq .Values.namespace.size "small" }}
+  {{- toYaml .Values.small.resourcequotas.build | nindent 2 }}
+  {{- end }}
+  {{- if eq .Values.namespace.size "medium" }}
+  {{- toYaml .Values.medium.resourcequotas.build | nindent 2 }}
+  {{- end }}

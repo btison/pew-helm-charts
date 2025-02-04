@@ -1,0 +1,11 @@
+kind: LimitRange
+apiVersion: v1
+metadata:
+  name: resource-limits
+spec:
+  {{- if eq .Values.namespace.size "small" }}
+  {{- toYaml .Values.small.limitranges | nindent 2 }}
+  {{- end }}
+  {{- if eq .Values.namespace.size "medium" }}
+  {{- toYaml .Values.medium.limitranges | nindent 2 }}
+  {{- end }}

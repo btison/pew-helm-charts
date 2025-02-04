@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "namespace-small.name" -}}
+{{- define "namespace.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "namespace-small.fullname" -}}
+{{- define "namespace.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "namespace-small.chart" -}}
+{{- define "namespace.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "namespace-small.labels" -}}
-helm.sh/chart: {{ include "namespace-small.chart" . }}
-{{ include "namespace-small.selectorLabels" . }}
+{{- define "namespace.labels" -}}
+helm.sh/chart: {{ include "namespace.chart" . }}
+{{ include "namespace.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "namespace-small.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "namespace-small.name" . }}
+{{- define "namespace.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "namespace.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "namespace-small.serviceAccountName" -}}
+{{- define "namespace.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "namespace-small.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "namespace.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

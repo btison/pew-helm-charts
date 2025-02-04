@@ -1,6 +1,0 @@
-kind: ResourceQuota
-apiVersion: v1
-metadata:
-  name: storage
-spec:
-  {{- toYaml .Values.resourcequotas.storage | nindent 2 }}
