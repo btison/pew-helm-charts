@@ -1,0 +1,40 @@
+nameOverride: ""
+
+openshift:
+  user:
+    name: 
+    role: 
+
+resourcequotas:
+  deploy:
+    hard:
+      limits.cpu: '3'
+      limits.memory: 12Gi
+      requests.cpu: '2'
+      requests.memory: 12Gi
+    scopes:
+      - NotTerminating
+  build:
+    hard:
+      limits.cpu: '3'
+      limits.memory: 12Gi
+      requests.cpu: '1'
+      requests.memory: 12Gi
+    scopes:
+      - Terminating
+  storage:
+    hard:
+      count/persistentvolumeclaims: '10'
+      limits.ephemeral-storage: 20Gi
+      requests.ephemeral-storage: 20Gi
+      requests.storage: 100Gi
+
+limitranges:
+  limits:
+    - type: Container
+      default:
+        cpu: '2'
+        memory: 2000Mi
+      defaultRequest:
+        cpu: 10m
+        memory: 64Mi

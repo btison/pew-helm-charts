@@ -1,0 +1,6 @@
+kind: LimitRange
+apiVersion: v1
+metadata:
+  name: resource-limits
+spec:
+  {{- toYaml .Values.limitranges | nindent 2 }}
