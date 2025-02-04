@@ -1,0 +1,7 @@
+nameOverride: ""
+
+openshift:
+  user:
+    name:
+    role:
+  
