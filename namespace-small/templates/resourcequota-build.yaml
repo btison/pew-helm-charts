@@ -1,0 +1,6 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: compute-build
+spec:
+  {{- toYaml .Values.resourcequotas.build | nindent 2 }}
