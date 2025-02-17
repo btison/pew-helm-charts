@@ -9,3 +9,6 @@ spec:
   {{- if eq .Values.namespace.size "medium" }}
   {{- toYaml .Values.medium.resourcequotas.storage | nindent 2 }}
   {{- end }}
+  {{- if eq .Values.namespace.size "large" }}
+  {{- toYaml .Values.large.resourcequotas.storage | nindent 2 }}
+  {{- end }}
