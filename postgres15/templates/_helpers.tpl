@@ -36,6 +36,7 @@ Common labels
 {{- define "postgres15.labels" -}}
 helm.sh/chart: {{ include "postgres15.chart" . }}
 {{ include "postgres15.selectorLabels" . }}
+{{ include "backstage.labels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -48,6 +49,13 @@ Selector labels
 {{- define "postgres15.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "postgres15.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Backstage labels
+*/}}
+{{- define "backstage.labels" -}}
+backstage.io/kubernetes-id: {{ .Release.Namespace }}
 {{- end }}
 
 {{/*
