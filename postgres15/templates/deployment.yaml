@@ -19,6 +19,7 @@ spec:
       {{- end }}
       labels:
         {{- include "postgres15.selectorLabels" . | nindent 8 }}
+        {{- include "backstage.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "postgres15.serviceAccountName" . }}
       securityContext:
