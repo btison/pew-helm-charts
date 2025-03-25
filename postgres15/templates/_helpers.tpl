@@ -55,7 +55,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Backstage labels
 */}}
 {{- define "backstage.labels" -}}
-backstage.io/kubernetes-namespace: {{ .Release.Namespace }}
 {{- if .Values.backstage.id }}
 backstage.io/kubernetes-id: {{ .Values.backstage.id }}
 {{- else }}

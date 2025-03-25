@@ -4,6 +4,7 @@ metadata:
   name: {{ include "postgres15.name" . }}
   labels:
     {{- include "postgres15.labels" . | nindent 4 }}
+    {{- include "backstage.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
